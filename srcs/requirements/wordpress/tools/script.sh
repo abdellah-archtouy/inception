@@ -1,9 +1,9 @@
 #!/bin/bash
 
-sleep  20
+sleep  10
 
 cd /var/www/html
-wp core download  --allow-root
+wp core download  --allow-root --path=/var/www/html
 mv wp-config-sample.php wp-config.php
 
 

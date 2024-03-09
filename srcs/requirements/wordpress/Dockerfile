@@ -17,6 +17,4 @@ RUN service php7.4-fpm start
 
 RUN chmod 777 script.sh
 
-# EXPOSE 9000
-
 CMD [ "./script.sh" ]
