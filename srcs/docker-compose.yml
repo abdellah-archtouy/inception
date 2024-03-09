@@ -5,6 +5,8 @@ services:
     image: mariadb:aarchtou
     container_name: mariadb
     build: ./requirements/mariadb
+    ports:
+      - 3306
     networks:
       - inception_net
     env_file:
@@ -16,6 +18,8 @@ services:
     image: wordpress:aarchtou
     container_name: wordpress
     build: ./requirements/wordpress
+    ports:
+      - 9000
     networks:
       - inception_net
     env_file:
@@ -50,11 +54,11 @@ volumes:
     driver_opts:
        o: bind
        type: none
-       device: /Users/aarchtou/Desktop/maria
+       device: /home/aarchtou/data/mariadb
 
   wordpress:
     driver: local
     driver_opts:
        o: bind
        type: none
-       device: /Users/aarchtou/Desktop/word
+       device: /home/aarchtou/data/wordpress
