@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep  10
+sleep  20
 
 cd /var/www/html
 wp core download  --allow-root --path=/var/www/html
