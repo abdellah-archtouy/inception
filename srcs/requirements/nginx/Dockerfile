@@ -6,10 +6,6 @@ COPY ./conf/*.conf /etc/nginx/
 
 RUN mkdir -p /etc/nginx/ssl
 
-
-# RUN openssl genpkey -algorithm rsa:2048 -out /etc/nginx/ssl/server.key
-
-# RUN openssl req -x509  -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt -subj "/C=MA/ST=Khouribga/L=Khouribga/O=1337/CN=aarchtou.42.fr"
 
 CMD ["nginx", "-g", "daemon off;"]

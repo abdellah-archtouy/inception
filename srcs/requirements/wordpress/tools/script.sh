@@ -2,7 +2,6 @@
 
 sleep  20
 
-cd /var/www/html
 wp core download  --allow-root
 mv wp-config-sample.php wp-config.php
 
@@ -21,4 +20,4 @@ wp user create $MYSQL_USER randomMail@gmail.com --role=author --user_pass=$MYSQL
 sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 0.0.0.0:9000#' /etc/php/7.4/fpm/pool.d/www.conf
 
 
-/usr/sbin/php-fpm7.4 -F
+exec /usr/sbin/php-fpm7.4 -F
