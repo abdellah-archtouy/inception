@@ -13,7 +13,7 @@ wp config set DB_USER $mariadb_USER --allow-root --path=/var/www/html
 wp config set DB_PASSWORD $mariadb_PASSWORD --allow-root --path=/var/www/html
 wp config set DB_HOST 'mariadb' --allow-root --path=/var/www/html
 
-wp core install --url=$DOMAIN_NAME --title=$DOMAIN_NAME --admin_user=$MYSQL_ROOT_USER --admin_password=$MYSQL_ROOT_PASSWORD --admin_email=aarchtou@student.1337.ma --allow-root --path=/var/www/html
+wp core install --url=$DOMAIN_NAME --title=$TITLE --admin_user=$MYSQL_ROOT_USER --admin_password=$MYSQL_ROOT_PASSWORD --admin_email=aarchtou@student.1337.ma --allow-root --path=/var/www/html
 
 
 wp user create $MYSQL_USER randomMail@gmail.com --role=author --user_pass=$MYSQL_PASSWORD  --allow-root --path=/var/www/html

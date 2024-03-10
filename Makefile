@@ -4,10 +4,11 @@ up:
 	docker-compose -f ${DOCKER_COMPOSE} up -d
 
 down:
-	docker-compose -f ${DOCKER_COMPOSE} down --volume
-clean:
-	sudo rm -rf /home/aarchtou/data/wordpress/*
-	sudo rm -rf /home/aarchtou/data/mariadb/*
+	docker-compose -f ${DOCKER_COMPOSE} down --volumes
+re : down  rmi up
+# clean:
+# 	sudo rm -rf /home/aarchtou/data/wordpress/*
+# 	sudo rm -rf /home/aarchtou/data/mariadb/*
 rmi :
 	docker rmi mariadb:aarchtou wordpress:aarchtou nginx:aarchtou
 rm :
