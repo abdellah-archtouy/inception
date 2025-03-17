@@ -71,7 +71,7 @@ inception/
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/inception.git
+   git clone https://github.com/abdellah-archtouy/inception.git
    cd inception
    ```
 2. Configure environment variables in `.env` file.
