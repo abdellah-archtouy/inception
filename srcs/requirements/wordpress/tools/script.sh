@@ -26,12 +26,28 @@ if [ ! -f /var/www/html/wp-includes/version.php ]; then
     $WP core download
 fi
 
+# An earlier failed run can leave the untouched sample config in the volume.
+# It makes WordPress connect as 'username_here' and carries no real salts,
+# so replace it rather than keeping it.
+if [ -f /var/www/html/wp-config.php ] && \
+   grep -q "'username_here'" /var/www/html/wp-config.php; then
+    rm -f /var/www/html/wp-config.php
+fi
+
 if [ ! -f /var/www/html/wp-config.php ]; then
     $WP config create \
         --dbname="$MYSQL_DATABASE" \
         --dbuser="$mariadb_USER" \
         --dbpass="$mariadb_PASSWORD" \
         --dbhost=mariadb
+fi
+
+# Keep an existing config in step with the environment if credentials change.
+if [ "$($WP config get DB_USER 2>/dev/null)" != "$mariadb_USER" ]; then
+    $WP config set DB_NAME "$MYSQL_DATABASE"
+    $WP config set DB_USER "$mariadb_USER"
+    $WP config set DB_PASSWORD "$mariadb_PASSWORD"
+    $WP config set DB_HOST mariadb
 fi
 
 if ! $WP core is-installed 2>/dev/null; then
