@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 mysqld_safe &
 
@@ -23,4 +23,4 @@ EOF
 
 mysqladmin -u root -p${mariadb_ROOT_PASSWORD} shutdown
 
-exec mysqld
+exec mysqld --user=mysql

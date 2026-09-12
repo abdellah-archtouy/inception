@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   mariadb:
     image: mariadb:aarchtou
@@ -9,7 +7,7 @@ services:
       - inception_net
     env_file:
       - .env
-    restart : always
+    restart: always
     volumes:
       - mariadb:/var/lib/mysql
   wordpress:
@@ -20,7 +18,7 @@ services:
       - inception_net
     env_file:
       - .env
-    restart : always
+    restart: always
     volumes:
       - wordpress:/var/www/html
     depends_on:
@@ -35,7 +33,7 @@ services:
       - inception_net
     env_file:
       - .env
-    restart : always
+    restart: always
     volumes:
       - wordpress:/var/www/html
     depends_on:
@@ -48,13 +46,12 @@ volumes:
   mariadb:
     driver: local
     driver_opts:
-       o: bind
-       type: none
-       device: /home/aarchtou/data/mariadb
-
+      o: bind
+      type: none
+      device: ${DATA_PATH}/mariadb
   wordpress:
     driver: local
     driver_opts:
-       o: bind
-       type: none
-       device: /home/aarchtou/data/wordpress
+      o: bind
+      type: none
+      device: ${DATA_PATH}/wordpress
